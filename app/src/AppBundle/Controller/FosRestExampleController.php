@@ -8,14 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class FosRestExampleController extends FOSRestController
 {
     /**
-     * @Route("/users-fos")
+     * @Route("/users-fos.{format}")
      */
-    public function getUsersAction()
+    public function getUsersAction( $format )
     {
-        $data = ['username' => 'John Doe With Fos Rest'];
+        $data = ['user' => [ 'name' => 'John Doe With Fos Rest', 'cool' => ['awsome', 'nice' ]]];
         $view = $this->view($data, 200)
             ->setTemplate('default/user.html.twig')
-            //->setTemplateVar('user')
+            ->setFormat($format)
         ;
 
         return $this->handleView($view);
