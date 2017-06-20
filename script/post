@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -H "Content-Type: application/json" -X POST -d '{"firstname":"Édouard","lastname":"Touraille", "groups" : [ { "role": "ADMIN" }]}' http://localhost/app_dev.php/api/users

@@ -44,3 +44,10 @@ services:
         public: false
         calls:
             - ['registerHandler', [ 'tree', [ '@app_bundle.tree_handler', 'createResponse'] ] ]
+
+    AppBundle\Exception\ExceptionSubscriber:
+        class: AppBundle\Exception\ExceptionSubscriber
+        arguments:  ['@service_container', '@logger']
+        tags:
+          - { name: kernel.event_subscriber }
+

@@ -68,6 +68,19 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+sensio_framework_extra:
+    request: { converters: true }
+
 fos_rest:
     service:
         view_handler:         app_bundle.view_handler
+    body_converter:
+        enabled: true
+    view:
+        view_response_listener: force
+        formats:
+            json: true
+    format_listener: 
+        rules: 
+            - { path: '^/api', priorities: ['json'], fallback_format: json, prefer_extension: false } 
+            
